@@ -4,7 +4,7 @@
     <arg name="show_vis" default="true"/>
 
     <!-- Run camera driver -->
-    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <!-- <include file="$(find realsense2_camera)/launch/rs_camera.launch">
         <arg name="color_width" value="1280"/>
         <arg name="color_height" value="720"/>
         <arg name="color_fps" value="30"/>
@@ -15,16 +15,16 @@
 
         <arg name="enable_sync" value="true"/>
         <arg name="align_depth" value="true"/>
-    </include>
+    </include> -->
 
     <!-- Launch ORB_SLAM3 -->
     <include file="$(find orb_slam3_ros_wrapper)/launch/orb_slam3.launch">
         <arg name="mode" value="$(arg mode)"/>
-        <arg name="rgb_topic" value="/camera/color/image_raw" />
-        <arg name="depth_topic" value="/camera/aligned_depth_to_color/image_raw" />
+        <arg name="rgb_topic" value="/multijackal_01/d435i/color/image_raw" />
+        <arg name="depth_topic" value="/multijackal_01/d435i/aligned_depth_to_color/image_raw" />
         <arg name="imu_topic" value="/camera/imu" />
         <arg name="config_file" value="$(find orb_slam3_ros_wrapper)/config/realsense_config.yaml" />
-        <arg name="camera_base_frame" value="camera_link" />
+        <arg name="camera_base_frame" value="orb/camera_link" />
         <arg name="show_vis" value="$(arg show_vis)"/>
     </include>
 </launch>

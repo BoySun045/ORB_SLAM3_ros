@@ -15,13 +15,16 @@
 #include "include/System.h"
 #include "orb_slam3_ros_wrapper/frame.h"
 
+#include <tf/transform_listener.h>
+
+
 class ORB_SLAM3_interface
 {
   ORB_SLAM3::System* mpSLAM;
 
   ros::NodeHandle* node_handle;
 
-  ros::Publisher frame_pub;
+  ros::Publisher frame_pub, pose_pub;
 
   std::string map_frame_id;
   std::string pose_frame_id;
@@ -40,4 +43,14 @@ public:
 
   void publish_frame(Sophus::SE3f Tcw, sensor_msgs::Image msgRGB, sensor_msgs::Image msgD,
                          ORB_SLAM3::System::eSensor sensor_type);
+  
+  tf::TransformBroadcaster br;
+  void publish_tf(geometry_msgs::PoseStamped cam_pose);
+
+  // flag for init cam odom frame
+  bool cam_pose_init = false;
+  bool cam_initpose_pub = false;
+  double x, y, z;
+  tf::Quaternion q_odom;
+
 };

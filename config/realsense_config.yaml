@@ -13,10 +13,10 @@
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV)
-Camera.fx: 636.1981811523438
-Camera.fy: 635.5728149414062
-Camera.cx: 633.679931640625
-Camera.cy: 372.60797119140625
+Camera.fx: 610.4970703125
+Camera.fy: 610.9518432617188
+Camera.cx: 327.2608642578125
+Camera.cy: 230.74049377441406
 
 Camera.k1: -0.0566207692027092
 Camera.k2: 0.06283268332481384
@@ -32,8 +32,8 @@ Camera.fps: 30.0
 Camera.RGB: 1
 
 # Camera resolution
-Camera.width: 1280
-Camera.height: 720
+Camera.width: 640
+Camera.height: 480
 
 # IR projector baseline times fx (aprox.)
 Camera.bf: 40.0

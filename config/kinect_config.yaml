@@ -28,19 +28,19 @@
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV) 
-Camera.cx: 642.460449
-Camera.cy: 362.501892
-Camera.fx: 606.060425
-Camera.fy: 605.906494
+Camera.cx: 638.6008911132812
+Camera.cy: 364.5616149902344
+Camera.fx: 610.02783203125
+Camera.fy: 609.9029541015625
 
-Camera.k1: -0.236053
-Camera.k2: -2.424712
-Camera.p1: -0.000067
-Camera.p2: -0.000392
-Camera.k3: 1.915454
-Camera.k4: -0.352212
-Camera.k5: -2.198865
-Camera.k6: 1.793799
+Camera.k1: 0.13804705440998077
+Camera.k2: -2.563929557800293
+Camera.p1: 0.0011109553
+Camera.p2: -0.0003722790
+Camera.k3: 1.671810507
+Camera.k4: 0.018572522327
+Camera.k5: -2.3607542
+Camera.k6: 1.57682037
 
 Camera.width: 1280
 Camera.height: 720
@@ -77,6 +77,7 @@ ORBextractor.nLevels: 8
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
 # You can lower these values if your images have low contrast	
+
 ORBextractor.iniThFAST: 20
 ORBextractor.minThFAST: 7
 
@@ -107,6 +108,21 @@ Viewer.ViewpointF: 500
 #                 Rotation[0]: -0.00490873, -0.999975, -0.00502406
 #                 Rotation[1]: 0.0185816, -0.00511446, 0.999814
 #                 Rotation[2]: -0.999815, 0.00481447, 0.0186062
+
+IMU (Color to IMU):
+  Extrinsics:
+    Translation: [-46.9479, -28.5432, 3.25674]
+    Rotation[0]: [0.00170211, 0.00881833, -0.99996]
+    Rotation[1]: [-0.999999, -0.000211825, -0.00170405]
+    Rotation[2]: [-0.000226843, 0.999961, 0.00881794]
+
+IMU (IMU to Color):
+  Extrinsics:
+    Translation: [-28.4625, -2.84865, -47.0234]
+    Rotation[0]: [0.00170211, -0.999999, -0.000226843]
+    Rotation[1]: [0.00881833, -0.000211825, 0.999961]
+    Rotation[2]: [-0.99996, -0.00170405, 0.00881794]
+
 
 #--------------------------------------------------------------------------------------------
 # IMU Parameters

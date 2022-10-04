@@ -10,6 +10,9 @@
         <arg name="color_resolution" value="720P"/>
         <arg name="fps" value="30"/>
         <arg name="imu_rate_target" value="200"/>
+        <!-- <arg name ="recording_file" value="/home/boysun/dataset/sutd/kinect_azure/1.mkv"/>
+        <arg name = "rviz" value="false"/> -->
+
     </include>
 
     <!-- Launch ORB_SLAM3 -->
