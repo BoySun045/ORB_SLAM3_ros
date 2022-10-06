@@ -2,18 +2,22 @@
     <!--options: mono, rgbd or inertial  -->
     <arg name="mode" default="rgbd"/>
     <arg name="show_vis" default="true"/>
-
+    <arg name="odom_frame" default="odom"/>  <!-- the reference static frame -->
+    <arg name="track_frame" default="rgb_camera_link"/>  <!-- tracked camera base frame -->
+    <arg name="offline" default="true"/>
+    
     <!-- Run camera driver -->
-    <include file="$(find azure_kinect_ros_driver)/launch/driver.launch">
-        <arg name="depth_mode" value="WFOV_2X2BINNED" />
-        <arg name="depth_unit" value="32FC1" />
-        <arg name="color_resolution" value="720P"/>
-        <arg name="fps" value="30"/>
-        <arg name="imu_rate_target" value="200"/>
-        <!-- <arg name ="recording_file" value="/home/boysun/dataset/sutd/kinect_azure/1.mkv"/>
-        <arg name = "rviz" value="false"/> -->
-
-    </include>
+    <group if="$(arg offline)">
+        <include file="$(find azure_kinect_ros_driver)/launch/driver.launch">
+            <arg name="depth_mode" value="WFOV_2X2BINNED" />
+            <arg name="depth_unit" value="32FC1" />
+            <arg name="color_resolution" value="720P"/>
+            <arg name="fps" value="30"/>
+            <arg name="imu_rate_target" value="200"/>
+            <!-- <arg name ="recording_file" value="/home/boysun/dataset/sutd/kinect_azure/1.mkv"/>
+            <arg name = "rviz" value="false"/> -->
+        </include>
+    </group>
 
     <!-- Launch ORB_SLAM3 -->
     <include file="$(find orb_slam3_ros_wrapper)/launch/orb_slam3.launch">
@@ -22,8 +26,9 @@
         <arg name="depth_topic" value="/depth_to_rgb/image_raw" />
         <arg name="imu_topic" value="/imu" />
         <arg name="config_file" value="$(find orb_slam3_ros_wrapper)/config/kinect_config.yaml" />
-        <arg name="camera_base_frame" value="camera_base" />
+        <arg name="camera_base_frame" value="$(arg track_frame)"/>
         <arg name="show_vis" value="$(arg show_vis)"/>
+        <arg name="odom_frame" value="$(arg odom_frame)"/>
     </include>
 
     <arg name="manager" value="test_manager"/>

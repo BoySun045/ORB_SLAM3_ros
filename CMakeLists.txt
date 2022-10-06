@@ -18,6 +18,7 @@ find_package (catkin REQUIRED COMPONENTS
    image_transport
    tf
    sensor_msgs
+   nav_msgs
    geometry_msgs
    message_generation
 )
@@ -40,11 +41,12 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   sensor_msgs
+  nav_msgs
   geometry_msgs
 )
 
 catkin_package (
-   CATKIN_DEPENDS roscpp rospy std_msgs cv_bridge image_transport tf sensor_msgs message_runtime
+   CATKIN_DEPENDS roscpp rospy std_msgs cv_bridge image_transport tf sensor_msgs nav_msgs message_runtime
    LIBRARIES {PROJECT_NAME}
 )
 
